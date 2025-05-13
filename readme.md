@@ -1,58 +1,59 @@
-🎮 Projeto Busca de Preços de Jogos
-Este projeto é um aplicativo desenvolvido com Streamlit que permite buscar e comparar o preço de um jogo nas seguintes lojas digitais:
+# 🔍 Buscador de Jogos - Steam, Epic Games e Xbox
 
-Steam
+Este projeto é uma aplicação Python com Streamlit que busca preços de jogos nas lojas **Steam**, **Epic Games Store** e **Xbox**.
 
-Epic Games Store
+## 🎮 Funcionalidades
 
-Xbox Store
+- Busca simultânea do nome do jogo nas três lojas.
+- Exibe o preço atual e o link direto para compra.
+- Interface simples via navegador usando Streamlit.
 
-O projeto realiza web scraping e automação de navegador para coletar as informações de forma dinâmica.
+## 🧠 Estrutura
 
-📁 Estrutura do Projeto
-bash
-Copiar
-Editar
-📦 projeto-busca-jogos/
-├── chrome-win/             # Navegador Chrome portátil (usado com Selenium)
-├── main.py                 # Arquivo principal do Streamlit
-├── steam_utils.py          # Função para buscar jogos na Steam
-├── epic_utils.py           # Função para buscar jogos na Epic Games Store
-├── xbox_utils.py           # Função para buscar jogos na Xbox Store
-├── requirements.txt        # Dependências do projeto
-└── README.md               # Este arquivo
-⚙️ Requisitos
-Instale as dependências com:
+- `main.py`: Arquivo principal com a interface e orquestração.
+- `steam_utils.py`: Lógica de scraping para Steam.
+- `epic_utils.py`: Lógica de scraping para Epic.
+- `xbox_utils.py`: Lógica de scraping para Xbox.
 
-bash
-Copiar
-Editar
+## 📦 Bibliotecas utilizadas
+
+- `streamlit`
+- `requests`
+- `beautifulsoup4`
+- `selenium`
+- `webdriver-manager` (opcional, se usar navegador instalado)
+- `lxml`
+- `logging`
+
+## ⚠️ Complexidade
+
+A busca nas lojas exige técnicas de **web scraping**, e algumas páginas utilizam carregamento dinâmico via JavaScript. Em alguns casos, é necessário utilizar o Selenium com um navegador local para obter as informações corretamente.
+
+# Como rodar
+
+## Instale as dependências
 pip install -r requirements.txt
-❗ Importante: Este projeto utiliza uma versão portátil do Chrome dentro da pasta chrome-win. Certifique-se de que o caminho para o binário está correto dentro dos scripts (chrome-win/chrome.exe).
 
-🚀 Como Executar
-bash
-Copiar
-Editar
+## Rode o Streamlit
 streamlit run main.py
-📦 Bibliotecas Utilizadas
-streamlit – Interface web
 
-requests – Requisições HTTP para páginas simples (como a Steam)
 
-beautifulsoup4 – Extração de dados HTML
 
-selenium – Navegação dinâmica (necessário para a Epic Games Store)
+---
 
-📚 Complexidade
-Este projeto envolve:
+## 🚫 Importante: Chrome local
 
-Web scraping com BeautifulSoup
+Por questões de limite de tamanho do GitHub, a pasta `chrome-win/` (onde está o navegador Chromium usado pelo Selenium) **não está incluída neste repositório**.
 
-Manipulação de DOM dinâmico com Selenium
+Para utilizar corretamente o projeto:
 
-Organização modular das funções por loja
+1. Baixe o Chromium manualmente:
+   - [https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html](https://commondatastorage.googleapis.com/chromium-browser-snapshots/index.html)
+2. Extraia o conteúdo em uma pasta chamada `chrome-win` dentro do projeto.
+3. Certifique-se de que o caminho do executável esteja referenciado corretamente no código:
 
-Interface interativa com Streamlit
+```python
+chromium_path = os.path.join(os.getcwd(), "chrome-win", "chrome.exe")
 
-É um projeto ideal para estudos de scraping e construção de interfaces rápidas em Python.
+
+
